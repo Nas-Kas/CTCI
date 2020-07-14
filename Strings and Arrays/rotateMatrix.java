@@ -18,7 +18,7 @@ public class rotateMatrix {
 
     public static void transpose(int [] [] matrix){ // flips matrix 180 degrees
         for(int i = 0; i < matrix.length; i++){
-            for(int j = i + 1; j < matrix.length; j++){
+            for(int j = i; j < matrix[i].length; j++){
                 int temp = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
                 matrix[j][i] = temp;
@@ -45,8 +45,8 @@ public class rotateMatrix {
     }
     public static void main (String[] args){
         int [] [] test = new int [] [] {{1,2,3},{4,5,6},{7,8,9}};
-        int [] [] test2 = new int [] [] {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
+        //int [] [] test2 = new int [] [] {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
         rotate(test);
-        rotate(test2);
+        //rotate(test2);
     }
 }
