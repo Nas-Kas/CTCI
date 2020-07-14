@@ -54,9 +54,9 @@ public class URLify {
         char [] str = new char [] {'M','r',' ','J','o','h','n',' ','S','m','i','t','h',' ',' ',' ',' '};
         urlinPlace(str, str.length);
 
-        //System.out.println(url(a));
-        //System.out.println(url(b));
-        //System.out.println(url(c));
-        //System.out.println(url(d));
+        System.out.println(url(a));
+        System.out.println(url(b));
+        System.out.println(url(c));
+        System.out.println(url(d));
     }
 }
