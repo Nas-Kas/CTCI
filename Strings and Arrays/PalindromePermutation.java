@@ -40,10 +40,31 @@ bottom up approach building a palindrome
 - put them together
 - if no pair increment oddcount and move on
     -if oddcount exceeds 1 return false
+
+
+easiest solution use a set and add and remove characters as you pass them
+if the sets size is greater than 2 at the end return false otherwise return true
 */
 import java.util.*;
 
 class PalindromePermutation{
+    public static boolean setSoln(String input){
+        HashSet<Character> set = new HashSet<Character>();
+        input = input.toLowerCase();
+        for(int i = 0; i < input.length(); i++){
+            char curr = input.charAt(i);
+            if(set.contains(curr)){
+                set.remove(curr);
+            }else{
+                set.add(curr);
+            }
+        }
+        if(set.size() > 2){
+            return false;
+        }
+        return true;
+    }
+
     public static boolean bottomUp(String input){
         ArrayList<Integer> pairs = mapTopair(mapify(input));
         if(pairs.size() <= 1){
@@ -86,17 +107,29 @@ class PalindromePermutation{
         return pairs;
     }
     public static void main (String[]args){
-        String a = "Stats";
-        String b = "Sagas";
-        String c = "Repa per";
-        String d = "future";
-        String e = "failures";
-        String f = "INsdfe cto ry";
-        System.out.println(bottomUp(a));
-        System.out.println(bottomUp(b));
-        System.out.println(bottomUp(c));
-        System.out.println(bottomUp(d));
-        System.out.println(bottomUp(e));
-        System.out.println(bottomUp(f));
+        String a = "Stats"; // true
+        String b = "Sagas"; // true
+        String c = "Repa per"; // true
+        String d = "future"; // false
+        String e = "failures"; // false
+        String f = "INsdfe cto ry"; // false
+        String g = ""; // true
+        String h = "!!!!????!"; // true
+        //System.out.println(bottomUp(a));
+        //System.out.println(bottomUp(b));
+        //System.out.println(bottomUp(c));
+        //System.out.println(bottomUp(d));
+        //System.out.println(bottomUp(e));
+        //System.out.println(bottomUp(f));
+
+        System.out.println(setSoln(a));
+        System.out.println(setSoln(b));
+        System.out.println(setSoln(c));
+        System.out.println(setSoln(d));
+        System.out.println(setSoln(e));
+        System.out.println(setSoln(f));
+        System.out.println(setSoln(g));
+        System.out.println(setSoln(h));
+
     }
 }
