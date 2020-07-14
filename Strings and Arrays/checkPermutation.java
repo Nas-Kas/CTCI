@@ -31,6 +31,7 @@ public class checkPermutation  {
     }
 
     public static String stringSort(String a){
+        a = a.toLowerCase();
         char [] arr = a.toCharArray();
         Arrays.sort(arr);
         String res = String.valueOf(arr);
@@ -40,10 +41,11 @@ public class checkPermutation  {
     public static boolean arrSolution(String a, String b){
         int [] arr = bitArr(a);
         int [] brr = bitArr(b);
-        return arr.equals(brr);
+        return Arrays.equals(arr,brr);
     }
 
     public static int [] bitArr(String a){
+        a = a.toLowerCase();
         int [] arr = new int [256];
         for(int i = 0; i < a.length(); i++){
             arr[a.charAt(i)]++;
@@ -67,6 +69,20 @@ public class checkPermutation  {
 
 
     public static void main (String [] args){
+        String a = "abcd";
+        String b = "defg";
+        String c = "ABCD EF";
+        String d = "BAc dEf";
+        System.out.println(mapSolution(a,a)); // true
+        System.out.println(mapSolution(a,b)); // false
+        System.out.println(mapSolution(c,d)); // true
+
+        System.out.println(sortSolution(a,a));
+        System.out.println(sortSolution(a,b));
+        System.out.println(sortSolution(c,d));
         
+         System.out.println(arrSolution(a,a));
+         System.out.println(arrSolution(a,b));
+         System.out.println(arrSolution(c,d));
     }
 }
