@@ -12,18 +12,6 @@ non-inplace - rebuild string but if you see a " " insert a "%20" then return new
 */
 
 public class URLify {
-    public static String url(String input){
-        String res = "";
-        for(int i = 0; i < input.length(); i++){
-            if(input.charAt(i) == ' '){
-                res += "%20";
-            }else{
-                res += input.charAt(i);
-            }
-        }
-        return res;
-    }
-
     public static void urlinPlace(char [] str, int length){
         int end = str.length - 1;
         int charP = str.length - 1;
@@ -45,6 +33,18 @@ public class URLify {
                 charP--;
             }
         }
+    }
+
+    public static String url(String input){
+        String res = "";
+        for(int i = 0; i < input.length(); i++){
+            if(input.charAt(i) == ' '){
+                res += "%20";
+            }else{
+                res += input.charAt(i);
+            }
+        }
+        return res;
     }
     public static void main (String [] args){
         String a = "";

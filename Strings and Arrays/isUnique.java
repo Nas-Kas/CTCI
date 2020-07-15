@@ -20,6 +20,24 @@ if we can change the data structure we can sort it and just do pairwise search w
 import java.util.*;
 
 public class isUnique {
+    public static boolean twoPointer(String input){ // nlogn time whenever someone say nlogn think string sorting because that is the fastest way a string can be sorted
+        input = input.toLowerCase();
+        char [] c = input.toCharArray();
+        Arrays.sort(c);
+        input = String.valueOf(c);
+        int p1 = 0;
+        int p2 = 1;
+        while(p2 < input.length()){
+            if(input.charAt(p1) == input.charAt(p2)){
+                return false;
+            }
+            p1++;
+            p2++;
+        }
+        return true;
+    }
+
+
     public static boolean setApproach(String input){ // o n^2 because for each character you're doing a set lookup
         input = input.toLowerCase();
         HashSet<Character> chars = new HashSet<Character>();
@@ -46,22 +64,7 @@ public class isUnique {
         return true;
     }
 
-    public static boolean twoPointer(String input){ // nlogn time whenever someone say nlogn think string sorting because that is the fastest way a string can be sorted
-        input = input.toLowerCase();
-        char [] c = input.toCharArray();
-        Arrays.sort(c);
-        input = String.valueOf(c);
-        int p1 = 0;
-        int p2 = 1;
-        while(p2 < input.length()){
-            if(input.charAt(p1) == input.charAt(p2)){
-                return false;
-            }
-            p1++;
-            p2++;
-        }
-        return true;
-    }
+
 
     public static void main (String[]args){
         String a = "test";

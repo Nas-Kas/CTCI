@@ -27,7 +27,6 @@ keep a edit count
 */
 
 public class OneAway {
-
     public static boolean oneOff(String a, String b){ // assume string a is longer than string b
         int editCount = 0;
         if(a.equals(b)){
@@ -36,7 +35,6 @@ public class OneAway {
         if(Math.abs(a.length() - b.length()) > 1){
             return false;
         }
-
         if(a.length() == b.length()){// replace
             for(int i = 0; i < a.length(); i++){
                 if(a.charAt(i) != b.charAt(i)){
