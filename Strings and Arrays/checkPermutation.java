@@ -23,6 +23,20 @@ public class checkPermutation  {
         return mapify(a).equals(mapify(b));
     }
 
+    public static HashMap<Character,Integer> mapify(String input){
+        HashMap<Character,Integer> output = new HashMap<Character,Integer>();
+        input = input.toLowerCase();
+        for(int i = 0; i < input.length(); i++){
+            Character curr = input.charAt(i);
+            if(output.containsKey(curr)){
+                output.put(curr, output.get(curr) + 1);
+            }else{
+                output.put(curr,1);
+            }
+        }
+        return output;
+    }
+
 
     public static boolean sortSolution(String a, String b){
         a = stringSort(a);
@@ -51,20 +65,6 @@ public class checkPermutation  {
             arr[a.charAt(i)]++;
         } 
         return arr;
-    }
-
-    public static HashMap<Character,Integer> mapify(String input){
-        HashMap<Character,Integer> output = new HashMap<Character,Integer>();
-        input = input.toLowerCase();
-        for(int i = 0; i < input.length(); i++){
-            Character curr = input.charAt(i);
-            if(output.containsKey(curr)){
-                output.put(curr, output.get(curr) + 1);
-            }else{
-                output.put(curr,1);
-            }
-        }
-        return output;
     }
 
 
