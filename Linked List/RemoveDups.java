@@ -19,6 +19,8 @@ class Node{
 }
 
 public class RemoveDups {
+    // input -> 1->2->3->2->3
+    // output -> 1->2->3->null
     public static Node removeDuplicates(Node head){
         HashSet<Integer> seenNodes = new HashSet<Integer>();
         Node start = head;

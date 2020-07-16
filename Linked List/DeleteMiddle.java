@@ -15,9 +15,9 @@ class Node{
         this.val = val;
     }
 }
-
-
 public class DeleteMiddle{
+    // lnput:the node c from the linked lista->b->c->d->e->f
+    // Result: nothing is returned, but the new linked list looks like a->b->d->e->f 
     public static void deleteNode(Node head, Node curr, int data){ // head is in header for testing purposes
         Node nex = curr.next;
         while(nex.next != null){
