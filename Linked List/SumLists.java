@@ -38,6 +38,8 @@ else if l2 is null
     -do the addition process for l2
     -set l3next to l1
 
+key point remember to handle all values in both lists before you exit the while loop
+make you use (l1 || l2) not (l1 && l2) it makes the problem must easier
 */
 
 
@@ -50,36 +52,35 @@ class Node{
 }
 
 public class SumLists {
+    //lnput:(6 -> 1 -> 7) + (2 -> 9 -> 5).That is,617 + 295.
+    //Output: 9 -> 1 -> 2. That is, 912. 
     public static Node sumNodes(Node l1, Node l2){
         Node l3 = new Node(-1);
         Node head = l3;
         int r = 0;
-        while(l1 != null && l2 != null){
-            System.out.println(l1.val + ":" + l2.val + ":" + r);
-            if(l1.val + l2.val + r < 10){
-                l3.next = new Node(l1.val + l2.val + r);
+        while(l1 != null || l2 != null){
+            int curr = 0;
+            if(l1 != null){
+                curr += l1.val;
+                l1 = l1.next;
+            }
+            if(l2 != null){
+               curr += l2.val;
+               l2 = l2.next;
+            }
+            if(curr + r >= 10){
+                l3.next = new Node(curr + r - 10);
+                r = 1;
+            }else{
+                l3.next = new Node(curr + r);
                 r = 0;
             }
-            else{
-                l3.next = new Node(l1.val + l2.val + r - 10);
-                r = 1;
-            }
             l3 = l3.next;
-            l1 = l1.next;
-            l2 = l2.next;
         }
-        if(l1 == null && l2 != null){
-            l3.next = l2;
-            if(r == 1){
-                l2.next = new Node(1);
-            }
-        }else if(l2 == null && l1 != null){
-            l3.next = l1;
-            if(r == 1){
-                l1.next = new Node(1);
-            }
+        if(r == 1){
+            l3.next = new Node(1);
         }
-        return head;
+        return head.next;
     }
 
     public static Node buildList(int [] nodes){
@@ -125,49 +126,7 @@ public class SumLists {
         Node l3 = buildList(t3);
         Node l4 = buildList(t4);
         Node res = sumNodes(reverseList(l1),reverseList(l2));
-        printL(reverseList(res.next));
+        printL(reverseList(res));
 
     }
 }
-
-/*
-come back to this problem learn how to do it succintly in less lines of code
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode l3 = new ListNode(-1);
-        ListNode head = l3;
-        int r = 0;
-        while(l1 != null && l2 != null){
-            System.out.println(l1.val + ":" + l2.val + ":" + r);
-            if(l1.val + l2.val + r < 10){
-                l3.next = new ListNode(l1.val + l2.val + r);
-                r = 0;
-            }
-            else{
-                l3.next = new ListNode(l1.val + l2.val + r - 10);
-                r = 1;
-            }
-            l3 = l3.next;
-            l1 = l1.next;
-            l2 = l2.next;
-        }
-        if(l1 == null && l2 != null){
-            l3.next = l2;
-            if(r == 1){
-                l2.next = new ListNode(1);
-            }
-        }else if(l2 == null && l1 != null){
-            l3.next = l1;
-            if(r == 1){
-                l1.next = new ListNode(1);
-            }
-        }else if(l1 == null && l2 == null){
-            if(r == 1){
-                l3.next = new ListNode(1);
-            }
-        }
-        return head.next;
-
-    }
-}
-
-*/
