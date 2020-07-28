@@ -1,4 +1,4 @@
-# Foobar
+# Cracking the Coding Interview Practice
 
 Going through CTCI doing all of the practice problems and heavily commenting for website blog
 
