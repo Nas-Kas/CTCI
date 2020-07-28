@@ -82,7 +82,11 @@ class TriStack{
     int peek(int part){
         switch(part){
             case 1:
-                return arr[p1];
+                if(arr[p1] == null){
+                    return -1;
+                }else{
+                    return arr[p1];
+                }
             case 2:
                 return arr[p2];
             case 3:
@@ -116,6 +120,13 @@ class TriStack{
     }
     public static void main (String [] args){
         TriStack test = new TriStack(3);
+        System.out.println(test.isEmpty(1)); // return true
+        System.out.println(test.peek(1)); // return null
+        System.out.println(test.isEmpty(2)); // return true
+        System.out.println(test.peek(2)); // return null
+        System.out.println(test.isEmpty(2)); // return true
+        System.out.println(test.peek(2)); // return null
+        test.push(5,1);
         test.push(5,1);
         test.push(5,1);
         test.push(5,1);      
@@ -125,6 +136,12 @@ class TriStack{
         test.push(7,3);
         test.push(7,3);
         test.push(7,3);
+        System.out.println(test.isEmpty(1)); // return false
+        System.out.println(test.peek(1)); // return 5
+        System.out.println(test.isEmpty(1)); // return false
+        System.out.println(test.peek(1)); // return 6
+        System.out.println(test.isEmpty(1)); // return false
+        System.out.println(test.peek(1)); // return 7
         //test.push(5,2);
         //test.push(5,3);
         System.out.println(Arrays.toString(test.arr));
