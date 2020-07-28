@@ -6,51 +6,44 @@ keep a pointer to the last min index?
 how to do it without nlogn sorting?
 how to deal with duplicates?
 
-build a stack with a min pointer
-build an arraylist that holds the pointer to the last min
+(brainstorming)
+build a stack with a min pointer?? 
+build an arraylist that holds the pointer to the last min (sort of)
 every time we remove a value check if the next previous min is less than current min
 if so update the min 
 otherwise do nothing
 
-currently doesnt work with negative numbers? how to fix?
+(correct approach)
+use two stacks or equally valid to use a stack and an arraylist - two stacks is easier to manage b/c built in methods
+
 */
 import java.util.*;
 
 public class minStack{
     Stack<Integer> st = new Stack<Integer>();
-    ArrayList<Integer> minList = new ArrayList<Integer>();
+    Stack<Integer> minList = new Stack<Integer>();
     
-    int push(int value){
-        if(getMin() == -1 || getMin() >= value){
-            st.push(value);
-            minList.add(value);
-            return value;
-        }else if(getMin() < value){ // if our current min is less than value
-            st.push(value);
-            return value;
+    void push(int value){
+        if(st.isEmpty() || value <= minList.peek()){
+            minList.push(value);
         }
-        return -1;
+        st.push(value);
     }
-
-    int pop(){
-        if(st.isEmpty()){
-            return -1;
+    void pop(){
+        if(!st.isEmpty() && st.peek() == minList.peek()){
+            minList.pop();
         }
-        int val = st.pop();
-        if(val == minList.get(minList.size() - 1)){
-            minList.remove(minList.size() - 1);
-            return val;
-        }
-        return -1;
+        st.pop();
     }
-
     int getMin(){
-        if(st.isEmpty()){
+        if(!minList.isEmpty()){
+            return minList.peek();
+        }else{
+            System.out.println("element needs to be inserted");
             return -1;
-        }else{  
-            return(minList.get(minList.size() - 1));
         }
     }
+    
 
     public static void main (String [] args){
         minStack test = new minStack();
