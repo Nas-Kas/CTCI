@@ -21,60 +21,67 @@ class TriStack{
     }
 
     int pop(int part){ // will pop from partiton and return popped value 1 means p1 2 means p2 etc.
-        if(part == 1){
-            if(p1 < 0){
-                return -1;
-            }else{
-                arr[p1] = null;
-                p1--;
-            }
+        int val = -1;
+        switch(part){
+            case 1:
+                if(p1 < 0){
+                    return -1;
+                }else{
+                    val = arr[p1];
+                    arr[p1] = null;
+                    p1--;
+                } 
+            case 2:
+                if(p2 <= partSize){
+                    return -1;
+                }else{
+                    val = arr[p2];
+                    arr[p2] = null;
+                    p2--;
+                }
+            case 3:
+                if(p3 <= partSize*2){
+                    return -1;
+                }else{
+                    val = arr[p3];
+                    arr[p3] = null;
+                    p3--;
+                }
+            default:
+                return val;
         }
-        else if(part == 2){
-            if(p2 <= partSize){
-                return -1;
-            }else{
-                arr[p2] = null;
-                p2--;
-            }
-        }
-        else if(part == 3){
-            if(p3 <= partSize*2){
-                return -1;
-            }else{
-                arr[p3] = null;
-                p3--;
-            }
-        }
-        return -1;
+        return val;
     }
 
     int push(int value, int part){ // currently if push would exceed partition we dont add to stack
-        if(part == 1){
-            if(p1 >= partSize){
+        switch(part){
+            case 1:
+                if(p1 >= partSize){
+                    return -1;
+                }else{
+                    arr[p1] = value;
+                    p1++;
+                    return value;
+                }
+            case 2:
+                if(p2 >= partSize*2){
+                    return -1;
+                }else{
+                    arr[p2] = value;
+                    p2++;
+                    return value;
+                }
+            case 3:
+                if(p3 >= arr.length){
+                    return -1;
+                }else{
+                    arr[p3] = value;
+                    p3++;
+                    return value;
+                }
+            
+            default:
                 return -1;
-            }else{
-                arr[p1] = value;
-                p1++;
-                return value;
-            }
-        }
-        else if(part == 2){
-            if(p2 >= partSize*2){
-                return -1;
-            }else{
-                arr[p2] = value;
-                p2++;
-                return value;
-            }
-        }
-        else if(part == 3){
-            if(p3 >= arr.length){
-                return -1;
-            }else{
-                arr[p3] = value;
-                p3++;
-                return value;
-            }
         }
         return -1; 
     }
