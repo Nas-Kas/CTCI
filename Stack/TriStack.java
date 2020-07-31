@@ -2,7 +2,7 @@
 : Describe how you could use a single array to implement three stacks. 
 - store each stack as a partition in the array
 - if the stack goes over capacity resize the array or return an error
-
+beep boop
 */
 import java.util.*;
 
