@@ -26,7 +26,6 @@ isEmpty (redundant??)
 public class sortStack {
     Stack<Integer> sortedStack = new Stack<Integer>();
     Stack<Integer> tempStack = new Stack<Integer>();
-
     void push(int value){
         if(sortedStack.isEmpty()){
             sortedStack.push(value);
@@ -42,24 +41,20 @@ public class sortStack {
             sortedStack.push(value);
         }
     }
-
     void pop(){
         if(!sortedStack.isEmpty()){
             sortedStack.pop();
         }
     }
-
     int peek(){ // returns -1 in case that is empty
         if(!sortedStack.isEmpty()){
             return sortedStack.peek();
         }
         return -1;
     }
-
     boolean isEmpty(){
         return sortedStack.isEmpty();
     }
-
     void printStack(){
         System.out.println(sortedStack);
     }

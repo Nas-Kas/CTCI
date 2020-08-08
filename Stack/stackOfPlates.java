@@ -24,7 +24,6 @@ public class stackOfPlates {
     stackOfPlates(int cap){
         capacity = cap;
     }
-
     void push(int value){
         System.out.println(tray.size());
         if(tray.size() == 0 || tray.get(level).size() == 0){
@@ -42,7 +41,6 @@ public class stackOfPlates {
             tray.add(temp);
         }
     }
-
     void pop(){
         if(tray.get(level).size() == 0){
             //tray.remove(level);

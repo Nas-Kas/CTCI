@@ -42,7 +42,6 @@ class animalShelter{
     int count = 0;
     Queue<Animal> cats = new LinkedList<>();
     Queue<Animal> dogs = new LinkedList<>();
-
     void enqueue(Animal pet){
         pet.timeStamp = count;
         count++;
@@ -52,7 +51,6 @@ class animalShelter{
             dogs.add(pet);
         }
     }
-
     void dequeueAny(){
         if(cats.isEmpty() && dogs.isEmpty()){
             System.out.println("Sorry were out of pets");
@@ -68,7 +66,6 @@ class animalShelter{
             }
         }
     }
-
     void dequeueCat(){
         if(!cats.isEmpty()){
             cats.poll();
@@ -76,7 +73,6 @@ class animalShelter{
             System.out.println("no more cats");
         }
     }
-
     void dequeueDog(){
         if(!dogs.isEmpty()){
             dogs.poll();
